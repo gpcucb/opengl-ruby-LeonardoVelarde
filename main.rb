@@ -6,7 +6,7 @@ include Gl
 include Glu
 include Glut
 
-def initGL
+def initOrthoGL
   glClearColor(0.0,0.0,0.0,0.0)
   # Color de fondo: negro
   glClear(GL_COLOR_BUFFER_BIT)
@@ -20,6 +20,21 @@ def initGL
   glMatrixMode(GL_MODELVIEW)
 end
 
+def initPerspectiveGL
+  glClearColor(0.0,0.0,0.0,0.0)
+  # Color de fondo: negro
+  glClear(GL_COLOR_BUFFER_BIT)
+  # Boramos la pantalla
+  glMatrixMode(GL_PROJECTION)
+  # Modo proyección
+  glLoadIdentity
+  # Cargamos la matriz identidad
+  gluPerspective(60.0,1.0,1.0,100.0)
+  glTranslatef(0.0,0.0,-3.0)
+  # Proyección perspectiva.
+  glMatrixMode(GL_MODELVIEW)
+end
+
 def endGl
   glEnd
   glFlush
@@ -27,7 +42,7 @@ end
 
 
 def displaySquare
-  initGL
+  initPerspectiveGL
   glBegin(GL_QUADS)
   # Dibujamos un cuadrado
   glColor3f(0.5,0.5,0.5)
@@ -44,7 +59,8 @@ def displaySquare
 end
 
 def displayTriangle
-  initGL
+  initPerspectiveGL
+
   glBegin(GL_TRIANGLES)
   # Dibujamos un triángulo
   glColor3f(1.0,0.0,0.0)
