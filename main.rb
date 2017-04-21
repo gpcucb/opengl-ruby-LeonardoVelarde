@@ -6,8 +6,7 @@ include Gl
 include Glu
 include Glut
 
-
-def display
+def initGL
   glClearColor(0.0,0.0,0.0,0.0)
   # Color de fondo: negro
   glClear(GL_COLOR_BUFFER_BIT)
@@ -19,7 +18,33 @@ def display
   glOrtho(-1.0,1.0,-1.0,1.0,-1.0,1.0)
   # Proyección ortográfica, dentro del cubo señalado
   glMatrixMode(GL_MODELVIEW)
-  # Modo de modelado
+end
+
+def endGl
+  glEnd
+  glFlush
+end
+
+
+def displaySquare
+  initGL
+  glBegin(GL_QUADS)
+  # Dibujamos un cuadrado
+  glColor3f(0.5,0.5,0.5)
+  # Color para el cuadrado
+  glVertex3f(-0.5,0.5,-0.5)
+  # Coordenadas del primer vértice (superior-izquierda)
+  glVertex3f(-0.5,-0.5,0.5)
+  # Coordenadas del segundo vértice (inferior-izquierda)
+  glVertex3f(0.5,-0.5,0.5)
+  # Coordenadas del primer vértice (inferior-derecha)
+  glVertex3f(0.5,0.5,-0.5)
+  # Coordenadas del primer vértice (superior-derecha)
+  endGl
+end
+
+def displayTriangle
+  initGL
   glBegin(GL_TRIANGLES)
   # Dibujamos un triángulo
   glColor3f(1.0,0.0,0.0)
@@ -34,10 +59,7 @@ def display
   # Color del tercer vértice: azúl
   glVertex3f(0.6,-0.2,0.0)
   # Coordenadas del tercer vértice
-   glEnd
-  # Terminamos de dibujar
-   glFlush
-  # Forzamos el dibujado
+  endGl
 end
 
 glutInit
@@ -45,5 +67,5 @@ glutInitDisplayMode(GLUT_SINGLE | GLUT_RGBA)
 glutInitWindowSize(500,500)
 glutInitWindowPosition(20,20)
 glutCreateWindow("OpenGL en Ruby")
-glutDisplayFunc :display
+glutDisplayFunc :displaySquare
 glutMainLoop
