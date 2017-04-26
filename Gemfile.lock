@@ -1,5 +1,5 @@
 GEM
-  remote: https://rubygems.org/
+  remote: http://rubygems.org/
   specs:
     glu (8.2.2)
     glut (8.2.2)
@@ -14,4 +14,4 @@ DEPENDENCIES
   opengl
 
 BUNDLED WITH
-   1.14.4
+   1.14.6
