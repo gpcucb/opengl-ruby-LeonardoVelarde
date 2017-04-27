@@ -21,40 +21,29 @@ def initOrthoGL
 end
 
 def initPerspectiveGL
-  glClearColor(0.0,0.0,0.0,0.0)
-  # Color de fondo: negro
-  glClear(GL_COLOR_BUFFER_BIT)
-  # Boramos la pantalla
-  glMatrixMode(GL_PROJECTION)
-  # Modo proyección
-  glLoadIdentity
-  # Cargamos la matriz identidad
-  gluPerspective(60.0,1.0,1.0,100.0)
   glDepthFunc(GL_LEQUAL)
   glEnable(GL_DEPTH_TEST)
-  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
-  glutInitDisplayMode(GLUT_SINGLE | GLUT_RGBA | GLUT_DEPTH)
   glClearDepth(1.0)
-  # Proyección perspectiva.
+
+  glClearColor(0.0,0.0,0.0,0.0) # Color de fondo: negro
+  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)# Borramos la pantalla
+  glMatrixMode(GL_PROJECTION) # Modo proyección
+  glLoadIdentity # Cargamos la matriz identidad
+  gluPerspective(60.0,1.0,1.0,100.0) # Proyección perspectiva.
+  glTranslatef(0.0,0.0,-2.0)
+
   glMatrixMode(GL_MODELVIEW)
 end
 
 def addSquare
-  glTranslatef(0.0,0.0,-3.0)
-  glBegin(GL_QUADS)
-    # Dibujamos un cuadrado
-    glColor3f(0.5,0.5,0.5)
-    # Color para el cuadrado
-    glVertex3f(-0.5,0.5,-0.5)
-    # Coordenadas del primer vértice (superior-izquierda)
-    glVertex3f(-0.5,-0.5,0.5)
-    # Coordenadas del segundo vértice (inferior-izquierda)
-    glVertex3f(0.5,-0.5,0.5)
-    # Coordenadas del primer vértice (inferior-derecha)
-    glVertex3f(0.5,0.5,-0.5)
-    # Coordenadas del primer vértice (superior-derecha)
+  # glTranslatef(0.0,0.0,-3.0)
+  glBegin(GL_QUADS)  #Dibujamos un cuadrado
+    glColor3f(0.5,0.5,0.5) #Color del primer vertice
+    glVertex3f(-0.5,0.5,-0.5) #Coordenadas del primer vértice (superior-izquierda)
+    glVertex3f(-0.5,-0.5,0.5) #Coordenadas del segundo vértice (inferior-izquierda)
+    glVertex3f(0.5,-0.5,0.5) #Coordenadas del primer vértice (inferior-derecha)
+    glVertex3f(0.5,0.5,-0.5) # Coordenadas del primer vértice (superior-derecha)
   glEnd
-  glFlush
 end
 
 def addTriangle
@@ -62,28 +51,28 @@ def addTriangle
     # Dibujamos un triángulo
     glColor3f(1.0,0.0,0.0)
     # Color del primer vértice: rojo
-    glVertex3f(0.0,0.8,0.0)
+    glVertex3f(0.0,0.5,0.0)
     # Coordenadas del primer vértice
-    glColor3f(0.0,1.0,0.0)
+    glColor3f(0.0,1.0,0.5)
     # Color del segundo vértice: verde
-    glVertex3f(-0.6,-0.2,0.0)
+    glVertex3f(-0.7,-0.5,0.0)
     # Coordenadas del segundo vértice
     glColor3f(0.0,0.0,1.0)
     # Color del tercer vértice: azúl
-    glVertex3f(0.6,-0.2,0.0)
+    glVertex3f(0.7,-0.5,0.0)
     # Coordenadas del tercer vértice
   glEnd
-  glFlush
 end
 
 def drawFunctionOrWhateverForNow
   initPerspectiveGL
   addSquare
   addTriangle
+  glFlush
 end
 
 glutInit
-glutInitDisplayMode(GLUT_SINGLE | GLUT_RGBA)
+glutInitDisplayMode(GLUT_SINGLE | GLUT_RGBA | GLUT_DEPTH) # Reservar espacio para el z buffer con GLUT_DEPTH
 glutInitWindowSize(500,500)
 glutInitWindowPosition(20,20)
 glutCreateWindow("OpenGL en Ruby")
