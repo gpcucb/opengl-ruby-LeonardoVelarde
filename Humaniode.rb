@@ -9,7 +9,7 @@ include Glut
 BODY_HEIGHT = 4.0
 BODY_WIDTH = 2.5
 BODY_LENGTH = 1.0
-ARM_HEIGHT = 3.5
+ARM_HEIGHT = 4.0
 ARM_WIDTH = 1.0
 ARM_LENGTH = 1.0
 LEG_HEIGHT = 4.5
@@ -46,12 +46,13 @@ def createRightArm
 	glPushMatrix
 		# Brazo
 		glTranslatef(-(BODY_WIDTH)/2,(BODY_HEIGHT-ARM_HEIGHT)/2,0)
-		glTranslatef(0,ARM_LENGTH/2,0)
+		glTranslatef(-0.4,ARM_LENGTH/2-0.5,0)
 		glRotatef(-30,0,0,1)
-		glTranslatef(0,-ARM_LENGTH/2,0)
+		glTranslatef(0,-ARM_LENGTH/2+0.5,0)
+
 		glPushMatrix
-		glScalef(ARM_WIDTH,ARM_HEIGHT,ARM_LENGTH)
-		glutSolidCube(1)
+			glScalef(ARM_WIDTH,ARM_HEIGHT,ARM_LENGTH)
+			glutSolidCube(1)
 		glPopMatrix 
 		# Mano
 		glTranslatef(0,-(ARM_HEIGHT+ARM_WIDTH)/2,0)
@@ -66,9 +67,9 @@ def createLeftArm
 	glPushMatrix
 		# Brazo
 		glTranslatef((BODY_WIDTH)/2,(BODY_HEIGHT-ARM_HEIGHT)/2,0)
-		glTranslatef(0,ARM_HEIGHT/2,0)
-		glRotatef(30,0,0,1)
-		glTranslatef(0,-ARM_HEIGHT/2,0)
+		glTranslatef(0,ARM_HEIGHT/2-0.5,0)
+		glRotatef(60,0,0,1)
+		glTranslatef(0,-ARM_HEIGHT/2+0.5,0)
 
 		glPushMatrix
 			glScalef(ARM_WIDTH,ARM_HEIGHT,ARM_LENGTH)
@@ -87,6 +88,10 @@ def createRightLeg
 	glPushMatrix
 		# Pierna
 		glTranslatef(-(BODY_WIDTH-LEG_WIDTH)/2,-(BODY_HEIGHT+LEG_HEIGHT)/2,0)
+		glTranslatef(0,(LEG_HEIGHT/2) + 0.5,0)
+		glRotatef(-30,0,0,1)
+		glTranslatef(0,(-LEG_HEIGHT/2),0)
+
 		glPushMatrix
 			glScalef(LEG_WIDTH,LEG_HEIGHT,LEG_LENGTH)
 			glutSolidCube(1)
@@ -119,7 +124,7 @@ end
 def createHead
 	glColor3f(1,0.6,0.6)
 	glPushMatrix
-		glTranslatef(0,BODY_HEIGHT/2 + HEAD_RADIUS*3/4,0)
+		glTranslatef(0,(BODY_HEIGHT/2 + HEAD_RADIUS*3/4)+0.4,0)
 		glutSolidSphere(HEAD_RADIUS,10,10)
 	glPopMatrix
 end
@@ -133,8 +138,9 @@ def displayHumanoid
 	createRightLeg
 	createLeftLeg
 	createHead
+
 	glFlush
-	sleep 2
+	sleep 20
 end
 
 glutInit
