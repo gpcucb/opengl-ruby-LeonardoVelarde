@@ -38,7 +38,7 @@ def createBody
 		glPushMatrix
 		glScalef(BODY_WIDTH,BODY_HEIGHT, BODY_LENGTH)
 		glColor3f(0.0, 0.3, 0.8)
-		glutSolidCube(1)
+		glutWireCube(1)
 	glPopMatrix
 end
 
@@ -52,13 +52,13 @@ def createRightArm
 
 		glPushMatrix
 			glScalef(ARM_WIDTH,ARM_HEIGHT,ARM_LENGTH)
-			glutSolidCube(1)
+			glutWireCube(1)
 		glPopMatrix 
 		# Mano
 		glTranslatef(0,-(ARM_HEIGHT+ARM_WIDTH)/2,0)
 		glColor3f(1,0.6,0.6)
 		glScalef(ARM_WIDTH,ARM_WIDTH,ARM_LENGTH)
-		glutSolidCube(1)
+		glutWireCube(1)
 	glPopMatrix
 end
 
@@ -73,13 +73,13 @@ def createLeftArm
 
 		glPushMatrix
 			glScalef(ARM_WIDTH,ARM_HEIGHT,ARM_LENGTH)
-			glutSolidCube(1)
+			glutWireCube(1)
 		glPopMatrix
 		# Mano
 		glTranslatef(0,-(ARM_HEIGHT+ARM_WIDTH)/2,0)
 		glColor3f(1,0.6,0.6)
 		glScalef(ARM_WIDTH,ARM_WIDTH,ARM_LENGTH)
-		glutSolidCube(1)
+		glutWireCube(1)
 	glPopMatrix
 end
 
@@ -94,13 +94,13 @@ def createRightLeg
 
 		glPushMatrix
 			glScalef(LEG_WIDTH,LEG_HEIGHT,LEG_LENGTH)
-			glutSolidCube(1)
+			glutWireCube(1)
 		glPopMatrix
 		# Pie
 		glTranslatef(0,-(LEG_HEIGHT+LEG_WIDTH)/2,LEG_LENGTH)
 		glColor3f(0.3,0.4,0.4)
 		glScalef(LEG_WIDTH,LEG_WIDTH,LEG_LENGTH*2)
-		glutSolidCube(1)
+		glutWireCube(1)
 	glPopMatrix
 end
 
@@ -111,13 +111,13 @@ def createLeftLeg
 		glTranslatef((BODY_WIDTH-LEG_WIDTH)/2,-(BODY_HEIGHT+LEG_HEIGHT)/2,0)
 		glPushMatrix
 			glScalef(LEG_WIDTH,LEG_HEIGHT,LEG_LENGTH)
-			glutSolidCube(1)
+			glutWireCube(1)
 		glPopMatrix
 		# Pie
 		glTranslatef(0,-(LEG_HEIGHT+LEG_WIDTH)/2,LEG_LENGTH)
 		glColor3f(0.3,0.4,0.4)
 		glScalef(LEG_WIDTH,LEG_WIDTH,LEG_LENGTH*2)
-		glutSolidCube(1)
+		glutWireCube(1)
 	glPopMatrix
 end
 
@@ -140,7 +140,6 @@ def displayHumanoid
 	createHead
 
 	glFlush
-	sleep 20
 end
 
 glutInit
