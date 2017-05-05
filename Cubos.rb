@@ -48,7 +48,7 @@ end
 
 def createRotatedCube cube_side, r, g, b, scale
 	glPushMatrix
-		glRotatef(20, 20, 20, 1)
+		glRotatef(scale, scale, scale, 1)
 		glColor3f(r, g, b)
 		glutWireCube(cube_side)
 	glPopMatrix
@@ -72,7 +72,7 @@ def displayHumanoid
 
 	glTranslatef(-4, 0, 0)
 
-	createRotatedCube(3, 1, 1, 0, 4)
+	createRotatedCube(3, 1, 1, 0, 30)
 
 	glTranslatef(4, -4, 0)
 
