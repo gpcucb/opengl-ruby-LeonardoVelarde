@@ -63,7 +63,7 @@ def createTranslaRotatedCube cube_side, r, g, b, translation
 	glPopMatrix
 end
 
-def displayHumanoid
+def displayCubes
 	initGL
 
 	createCube(3, 0, 0, 1)
@@ -88,5 +88,5 @@ glutInitDisplayMode(GLUT_SINGLE | GLUT_RGBA | GLUT_DEPTH)
 glutInitWindowPosition(20,20)
 glutInitWindowSize(500,500)
 glutCreateWindow("Humanoide OpenGL")
-glutDisplayFunc(:displayHumanoid)
+glutDisplayFunc(:displayCubes)
 glutMainLoop
